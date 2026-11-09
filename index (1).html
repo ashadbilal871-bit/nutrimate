@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NutriMate – Diet Plan & Calorie Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<main>
+  <header>
+    <h1>NutriMate</h1>
+    <p class="tag">Your diet plan, calories and water in one place</p>
+  </header>
+
+  <!-- Screen 1: registration + goal -->
+  <section id="setup">
+    <form id="form" class="glass">
+      <label>Name <input id="name" required maxlength="30" placeholder="Your name" autocomplete="off"></label>
+      <div class="row">
+        <label>Age <input id="age" type="number" min="10" max="100" required placeholder="years"></label>
+        <label>Height <input id="height" type="number" min="100" max="230" required placeholder="cm"></label>
+        <label>Weight <input id="weight" type="number" min="30" max="250" required placeholder="kg"></label>
+      </div>
+      <p class="label">What is your goal?</p>
+      <div class="goals">
+        <label class="goal"><input type="radio" name="goal" value="lose" checked><span><b>🔥</b>Lose weight</span></label>
+        <label class="goal"><input type="radio" name="goal" value="gain"><span><b>💪</b>Gain weight</span></label>
+      </div>
+      <button class="primary" type="submit">Get my diet plan</button>
+      <button class="link" type="button" id="cancel" hidden>Cancel</button>
+    </form>
+  </section>
+
+  <!-- Screen 2: plan + tracking -->
+  <section id="home" hidden>
+    <p class="hello" id="hello"></p>
+    <p class="next" id="next"></p>
+
+    <div class="glass hero">
+      <div class="ringbox">
+        <svg viewBox="0 0 180 180" id="ring" aria-hidden="true">
+          <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#39ffa0"/><stop offset="1" stop-color="#3cd7ff"/>
+            </linearGradient>
+          </defs>
+          <circle class="ring-bg" cx="90" cy="90" r="74"/>
+          <circle class="ring-fg" id="ringFg" cx="90" cy="90" r="74" transform="rotate(-90 90 90)"/>
+        </svg>
+        <div class="ringtxt"><span id="left">0</span><small id="leftLabel">kcal left</small></div>
+      </div>
+      <div class="stats">
+        <div><b id="eaten">0</b><span>Eaten</span></div>
+        <div><b id="target">0</b><span>Daily goal</span></div>
+        <div><b id="bmi">–</b><span id="bmiCat">BMI</span></div>
+      </div>
+    </div>
+
+    <h2>Today's diet plan</h2>
+    <ul id="meals"></ul>
+
+    <h2>Add other food</h2>
+    <form id="extraForm" class="row add">
+      <input id="fname" required placeholder="Food name" autocomplete="off">
+      <input id="fkcal" type="number" min="1" max="3000" required placeholder="kcal">
+      <button class="primary small" type="submit">Add</button>
+    </form>
+    <ul id="extras"></ul>
+
+    <h2>Water</h2>
+    <div class="glass water">
+      <div id="glasses"></div>
+      <button class="primary small blue" id="drink">+ Glass</button>
+    </div>
+
+    <div class="foot">
+      <button class="link" id="notifBtn">Turn on reminders</button>
+      <button class="link" id="edit">Edit profile</button>
+      <button class="link" id="resetDay">Reset today</button>
+    </div>
+  </section>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
